@@ -6,18 +6,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.biviones.shopmanager.R;
+import java.util.ArrayList;
 import java.util.List;
 
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
+class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
   private List<String> mMenuList;
+  private MenuPresenter mMainPresenter;
 
-  MenuAdapter(List<String> menuList){
-    mMenuList = menuList;
+  MenuAdapter(MenuPresenter mainPresenter) {
+    mMenuList = new ArrayList<>();
+    mMainPresenter = mainPresenter;
   }
 
   @Override
-  public MenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+  public MenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu, parent, false);
     return new ViewHolder(view);
@@ -27,6 +30,16 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
     String currentMenuItem = mMenuList.get(position);
 
     holder.nameMenu.setText(currentMenuItem);
+
+    holder.nameMenu.setOnClickListener(view -> {
+      if (mMainPresenter != null) {
+        mMainPresenter.onMenuItemClicked();
+      }
+    });
+  }
+
+  void addItem(String menuItem) {
+    mMenuList.add(menuItem);
   }
 
   @Override public int getItemCount() {
@@ -36,7 +49,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
   static class ViewHolder extends RecyclerView.ViewHolder {
     private final TextView nameMenu;
 
-    ViewHolder(View itemView){
+    ViewHolder(View itemView) {
       super(itemView);
       nameMenu = (TextView) itemView.findViewById(R.id.menu_name);
     }
