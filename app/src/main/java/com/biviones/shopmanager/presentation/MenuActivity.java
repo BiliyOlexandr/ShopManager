@@ -1,5 +1,6 @@
 package com.biviones.shopmanager.presentation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ public class MenuActivity extends AppCompatActivity implements MenuViewCallbacks
   }
 
   @Override public void navigateToCategories() {
-    //Intent intent = new Intent(this, )
+    Intent intent = new Intent(this, CategoryActivity.class);
+    startActivity(intent);
   }
 }

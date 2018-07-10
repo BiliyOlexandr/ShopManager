@@ -33,7 +33,7 @@ class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     holder.nameMenu.setOnClickListener(view -> {
       if (mMainPresenter != null) {
-        mMainPresenter.onMenuItemClicked();
+        mMainPresenter.onMenuItemClicked(currentMenuItem);
       }
     });
   }
