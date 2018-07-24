@@ -17,7 +17,7 @@ public class MenuPresenter {
         mViewCallbacks.navigateToCategories();
         break;
       case StoreUtil.STATISTIC:
-        // TODO mViewCallbacks.navigateToStatistic();
+        mViewCallbacks.navigateToStatistic();
         break;
     }
   }

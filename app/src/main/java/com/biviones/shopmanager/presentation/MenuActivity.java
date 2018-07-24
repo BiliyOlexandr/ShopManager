@@ -35,4 +35,9 @@ public class MenuActivity extends AppCompatActivity implements MenuViewCallbacks
     Intent intent = new Intent(this, CategoryActivity.class);
     startActivity(intent);
   }
+
+  @Override public void navigateToStatistic() {
+    Intent intent = new Intent(this,StatisticActivity.class);
+    startActivity(intent);
+  }
 }

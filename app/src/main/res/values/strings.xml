@@ -3,4 +3,5 @@
   <string name="store">Shop</string>
   <string name="statistic">Statistic</string>
   <string name="categories">Categories</string>
+  <string name="enter_category_name">Enter category name</string>
 </resources>
