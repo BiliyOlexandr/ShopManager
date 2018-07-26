@@ -9,7 +9,7 @@ import com.biviones.shopmanager.R;
 
 public class MenuActivity extends AppCompatActivity implements MenuViewCallbacks {
 
-  private MenuAdapter mMenuAdapter;
+  private ListAdapter mMenuAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class MenuActivity extends AppCompatActivity implements MenuViewCallbacks
     setContentView(R.layout.activity_main);
     RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.menu_recyclerView);
     MenuPresenter mMainPresenter = new MenuPresenter(this);
-    mMenuAdapter = new MenuAdapter(mMainPresenter);
+    mMenuAdapter = new ListAdapter(mMainPresenter);
 
     mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

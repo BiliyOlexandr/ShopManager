@@ -9,18 +9,24 @@ import com.biviones.shopmanager.R;
 import java.util.ArrayList;
 import java.util.List;
 
-class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
+class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
   private List<String> mMenuList;
   private MenuPresenter mMainPresenter;
+  private CategoryPresenter mCategoryPresenter;
 
-  MenuAdapter(MenuPresenter mainPresenter) {
+  ListAdapter(MenuPresenter mainPresenter) {
     mMenuList = new ArrayList<>();
     mMainPresenter = mainPresenter;
   }
 
+  ListAdapter(CategoryPresenter categoryPresenter) {
+    mMenuList = new ArrayList<>();
+    mCategoryPresenter = categoryPresenter;
+  }
+
   @Override
-  public MenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu, parent, false);
     return new ViewHolder(view);
@@ -30,12 +36,12 @@ class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     String currentMenuItem = mMenuList.get(position);
 
     holder.nameMenu.setText(currentMenuItem);
-
-    holder.nameMenu.setOnClickListener(view -> {
-      if (mMainPresenter != null) {
-        mMainPresenter.onMenuItemClicked(currentMenuItem);
-      }
-    });
+    if (mMainPresenter != null) {
+      holder.nameMenu.setOnClickListener(view -> mMainPresenter.onMenuItemClicked(currentMenuItem));
+    } else {
+      holder.nameMenu.setOnClickListener(
+          view -> mCategoryPresenter.onCategoryItemClicked(currentMenuItem));
+    }
   }
 
   void addItem(String menuItem) {

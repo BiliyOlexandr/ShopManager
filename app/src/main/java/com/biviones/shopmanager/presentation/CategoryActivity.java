@@ -5,6 +5,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,10 +14,20 @@ import com.biviones.shopmanager.R;
 
 public class CategoryActivity extends AppCompatActivity implements CategoryViewCallbacks {
 
+  private ListAdapter mCategoryAdapter;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_category);
+
+    RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.category_recyclerView);
+    CategoryPresenter mCategoryPresenter = new CategoryPresenter(this);
+    mCategoryAdapter = new ListAdapter(mCategoryPresenter);
+
+    mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    mRecyclerView.setAdapter(mCategoryAdapter);
 
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
@@ -39,7 +51,7 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewC
             if (!categoryName.isEmpty()) {
               Toast.makeText(getApplicationContext(),
                   "Category name confirm: " + categoryName, Toast.LENGTH_SHORT).show();
-              // TODO mCategoryAdapter.addItem(categoryName);
+              mCategoryAdapter.addItem(categoryName);
             } else {
               Toast.makeText(getApplicationContext(),
                   "Category name is empty", Toast.LENGTH_SHORT).show();
