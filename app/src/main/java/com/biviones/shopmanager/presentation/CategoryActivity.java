@@ -1,5 +1,6 @@
 package com.biviones.shopmanager.presentation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
@@ -36,7 +37,7 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewC
       actionBar.setTitle(R.string.categories);
     }
 
-    FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+    FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.category_fab);
     floatingActionButton.setOnClickListener(view -> {
       AlertDialog.Builder alertDialog = new AlertDialog.Builder(CategoryActivity.this);
       alertDialog.setTitle(R.string.categories);
@@ -50,11 +51,11 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewC
             String categoryName = inputText.getText().toString();
             if (!categoryName.isEmpty()) {
               Toast.makeText(getApplicationContext(),
-                  "Category name confirm: " + categoryName, Toast.LENGTH_SHORT).show();
+                  getString(R.string.confirm_category) + categoryName, Toast.LENGTH_SHORT).show();
               mCategoryAdapter.addItem(categoryName);
             } else {
               Toast.makeText(getApplicationContext(),
-                  "Category name is empty", Toast.LENGTH_SHORT).show();
+                  R.string.empty_category, Toast.LENGTH_SHORT).show();
             }
           });
 
@@ -74,7 +75,8 @@ public class CategoryActivity extends AppCompatActivity implements CategoryViewC
     }
   }
 
-  @Override public void navigateToItem() {
-
+  @Override public void navigateToItems() {
+    Intent intent = new Intent(this, ItemActivity.class);
+    startActivity(intent);
   }
 }

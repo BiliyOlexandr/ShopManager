@@ -3,5 +3,8 @@
   <string name="store">Shop</string>
   <string name="statistic">Statistic</string>
   <string name="categories">Categories</string>
+  <string name="items">Items</string>
   <string name="enter_category_name">Enter category name</string>
+  <string name="empty_category">Category name is empty</string>
+  <string name="confirm_category">Category name confirm:</string>
 </resources>

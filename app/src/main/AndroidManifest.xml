@@ -20,6 +20,8 @@
     </activity>
     <activity android:name=".presentation.StatisticActivity">
     </activity>
+    <activity android:name=".presentation.ItemActivity">
+    </activity>
   </application>
 
 </manifest>

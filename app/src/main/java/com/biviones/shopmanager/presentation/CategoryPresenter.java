@@ -1,7 +1,5 @@
 package com.biviones.shopmanager.presentation;
 
-import com.biviones.shopmanager.StoreUtil;
-
 public class CategoryPresenter {
 
   private CategoryViewCallbacks mCategoryViewCallbacks;
@@ -12,10 +10,6 @@ public class CategoryPresenter {
 
   // TODO add comments
   void onCategoryItemClicked(String name) {
-    switch (name) {
-      case StoreUtil.SHOP:
-        mCategoryViewCallbacks.navigateToItem();
-        break;
-    }
+        mCategoryViewCallbacks.navigateToItems();
   }
 }

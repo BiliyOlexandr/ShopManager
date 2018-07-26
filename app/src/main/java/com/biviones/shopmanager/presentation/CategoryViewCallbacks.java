@@ -2,5 +2,5 @@ package com.biviones.shopmanager.presentation;
 
 public interface CategoryViewCallbacks {
 
-  void navigateToItem();
+  void navigateToItems();
 }
